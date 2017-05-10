@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;revel_start&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../web" />
+      <root url="file://$PROJECT_DIR$/../martini" />
+      <root url="file://$PROJECT_DIR$/../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../perebor" />
+      <root url="file://$PROJECT_DIR$/../matrix" />
+    </CLASSES>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../web" />
+      <root url="file://$PROJECT_DIR$/../martini" />
+      <root url="file://$PROJECT_DIR$/../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../perebor" />
+      <root url="file://$PROJECT_DIR$/../matrix" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
