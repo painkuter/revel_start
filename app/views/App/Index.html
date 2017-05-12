@@ -1,26 +1,32 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
 
-<header class="jumbotron" style="background-color:#A9F16C">
-    <div class="container">
-        <div class="row">
-            <h1>It works!</h1>
-            <p>
-            <form action="/App/Hello" method="GET">
-                <input type="text" name="myName"/><br/>
-                <input type="submit" value="Say hello!"/>
-            </form>
-            </p>
-        </div>
-    </div>
-</header>
+<div id="login">
 
-<div class="container">
-    <div class="row">
-        <div class="span6">
-            {{template "flash.html" .}}
-        </div>
-    </div>
+    (try with demo/demo)
+
+    <form action="{{url "App.Login"}}" id="formLogin" method="POST">
+    <p class="field">
+        <label>Login Name:</label>
+        <input type="text" name="username" size="19" value="{{.flash.username}}" />
+    </p>
+    <p class="field">
+        <label>Password:</label>
+        <input type="password" name="password" size="19"/>
+    </p>
+    <p class="field">
+        <label>Remember:</label>
+        <input type="checkbox" name="remember" value="true"/>
+    </p>
+    <p class="buttons">
+        <input type="submit" value="Account login" />
+    </p>
+    </form>
+
+    <p>
+        <a href="{{url "App.Register"}}">Register New User</a>
+    </p>
+
 </div>
 
 {{template "footer.html" .}}

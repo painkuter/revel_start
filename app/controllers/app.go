@@ -5,6 +5,8 @@ import (
 
 	"github.com/revel/revel"
 	"golang.org/x/crypto/bcrypt"
+	"revel_start/app/models"
+	"github.com/Masterminds/squirrel"
 )
 
 type App struct {
@@ -52,3 +54,33 @@ func (c App) Login(username, password string, remember bool) revel.Result {
 	c.Flash.Error("Login failed")
 	return c.Redirect(routes.App.Index())
 }
+func (c App) Register() revel.Result {
+	return c.Render()
+}
+
+func (c App) SaveUser(user models.User, verifyPassword string) revel.Result {
+	c.Validation.Required(verifyPassword)
+	c.Validation.Required(verifyPassword == user.Password).
+		Message("Password does not match")
+	user.Validate(c.Validation)
+
+	if c.Validation.HasErrors() {
+		c.Validation.Keep()
+		c.FlashParams()
+		return c.Redirect(routes.App.Register())
+	}
+
+	user.HashedPassword, _ = bcrypt.GenerateFromPassword(
+		[]byte(user.Password), bcrypt.DefaultCost)
+	qb :=squirrel.Insert("squirrel.user").Values("login")
+
+	//err := c.Txn.Insert(&user)
+	if err != nil {
+		panic(err)
+	}
+
+	c.Session["user"] = user.Username
+	c.Flash.Success("Welcome, " + user.Name)
+	return c.Redirect(routes.Hotels.Index())
+}
+
